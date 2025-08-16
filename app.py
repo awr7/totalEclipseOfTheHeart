@@ -9,7 +9,7 @@ st.title("Solar Eclipse Path Visualizer")
 
 # Load shapefile
 shapefile_path = './data/umbra_lo.shp'
-gdf = gpd.read_file(shapefile_path)
+gdf = gpd.read_file(shapefile_path, engine="pyogrio")
 
 # Convert UTCTime to datetime with UTC timezone, then to Eastern Time (ET)
 gdf['UTCTime'] = pd.to_datetime(gdf['UTCTime'], format='%H:%M:%S').dt.tz_localize('UTC').dt.tz_convert('America/New_York')
